@@ -1,4 +1,5 @@
 import express from 'express';
+import { Request, Response } from 'express';
 import path from 'node:path';
 import db from './config/connection.js';
 //import routes from './routes/index.js';
@@ -34,7 +35,7 @@ const startApolloServer = async () => {
 
     
      // Important for MERN Setup: Any client-side requests that begin with '/graphql' will be handled by our Apollo Server
-     app.use('/graphql', expressMiddleware(server));
+     app.use('/graphql', expressMiddleware(server, {}));
 
     // if we're in production, serve client/build as static assets
     if (process.env.NODE_ENV === 'production') {
