@@ -22,8 +22,9 @@ const server = new ApolloServer({
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
-    
+     
      await server.start();
+     console.log('Apollo Server started successfully')
    //  await db();
 
 
@@ -48,9 +49,9 @@ const startApolloServer = async () => {
      //app.use(routes);
 
 
-    //  db.once('open', () => {
-    //   app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
-    // });
+     db.once('open', () => {
+      app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
+    });
 
     db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
